@@ -16,14 +16,24 @@ async fn main() {
 
     tracing::info!("Starting the DB Connection...");
 
+    let database_url = std::env::var("DATABASE_URL")
+    .expect("No DATABASE_URL");
+    
     let pool:PgPool = PgPoolOptions::new()
         .max_connections(4)
-        .connect("postgres://rusty:rusty@localhost:5555/rust_db")
+        .connect(&database_url)
         .await
         .unwrap_or_else(|err|{
             tracing::error!("Connection Error: {}", err);
             panic!("Connection Stopped.");
         });
+
+    tracing::info!("Running database migrations...");
+    if let Err(err) = sqlx::migrate!("./migrations").run(&pool).await {
+        tracing::error!("Failed to run migrations: {}", err);
+        panic!("Migration error, stopping server.");
+    }
+    tracing::info!("Migrations applied successfully!");
     
     start_expired_code_cleanup(pool.clone()).await;
     run(&pool).await;
