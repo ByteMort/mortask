@@ -98,6 +98,7 @@ pub async fn send_email(email: String, code: String)
             (StatusCode::INTERNAL_SERVER_ERROR, "Failed to connect to SMTP server".to_string())
         })?
         .credentials(creds)
+        .port(587) // Gmail TLS portu
         .build::<Tokio1Executor>();
 
     mailer.send(email)
