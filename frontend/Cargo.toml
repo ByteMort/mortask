@@ -2,6 +2,10 @@
 name = "mortask_frontend"
 version = "0.1.0"
 edition = "2024"
+authors = ["ByteMort <bytemort@gmail.com>"]
+description = "MorTask Frontend"
+repository = "https://github.com/ByteMort/mortask"
+license = "LicenseRef-Proprietary"
 
 [dependencies]
 iced = { version = "0.14.0", features = ["canvas", "svg", "tokio"]}
