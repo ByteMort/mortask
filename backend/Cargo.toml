@@ -2,6 +2,10 @@
 name = "mortask_backend"
 version = "0.1.0"
 edition = "2024"
+authors = ["ByteMort <bytemort@gmail.com>"]
+description = "MorTask Backend"
+repository = "https://github.com/ByteMort/mortask"
+license = "LicenseRef-Proprietary"
 
 [dependencies]
 tokio = { version = "1.52.3", features = ["full"] }
