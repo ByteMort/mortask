@@ -1,0 +1,25 @@
+[package]
+name = "mortask_frontend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+iced = { version = "0.14.0", features = ["canvas", "svg", "tokio"]}
+iced_anim = { version = "0.3.1", features = ["derive"] }
+iced_aw = { version = "0.14.1", features = ["date_picker"] }
+webbrowser = "1.2.1"
+image = "0.25.10"
+
+reqwest = { version = "0.13.4", features = ["json"] }
+tokio = { version = "1.53.1", features = ["time"]}
+
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+
+chrono = "0.4.45"
+
+keyring = { version = "4.1.6", features = [
+    "apple-native-keyring-store",
+    "windows-native-keyring-store",
+    "dbus-secret-service-keyring-store",
+] }
